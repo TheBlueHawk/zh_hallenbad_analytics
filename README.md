@@ -79,17 +79,17 @@ Open your crontab file for editing:
 crontab -e
 ```
 
-Add a line to execute the script every 20 minutes:
+Add a line to execute the script every 10 minutes:
 
 ```sh
-*/20 * * * * /path/to/your/virtualenv/python /path/to/your/script/log_hallendbad_data.py
+*/10 * * * * /path/to/your/virtualenv/python /path/to/your/script/log_hallendbad_data.py
 ```
 
 Make sure to replace `/path/to/your/virtualenv/python` and `/path/to/your/script/log_hallendbad_data.py` with the actual paths you identified earlier.
 
 ## Usage
 
-Once set up, the script will automatically run every 20 minutes, logging the visitor count and timestamp to a file named `visitor_count_log.txt` in the script's directory.
+Once set up, the script will automatically run every 10 minutes, logging the visitor count and timestamp to a file named `visitor_count_log.csv` in the script's directory.
 
 ## Contributing
 
