@@ -11,14 +11,18 @@ def on_message(ws, message):
             visitor_count = element['currentfill']
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             print(f"Timestamp: {timestamp}, Current visitor count: {visitor_count}")
-            
-            # Save to file
-            # check if file exists
-            if not os.path.isfile('visitor_count_log.csv'):
-                with open('visitor_count_log.csv', 'w') as file:
-                    file.write("Timestamp, Visitor count\n")
-            with open('visitor_count_log.csv', 'a') as file:
-                file.write(f"{timestamp}, {visitor_count}\n")
+            # Save to file in this folder
+            dir = os.path.dirname(__file__)
+            filename = os.path.join(dir, 'visitor_count_log.csv')
+            # If file does not exist, create it and write the header
+            if not os.path.isfile(filename):
+                with open(filename, 'w') as file:
+                    file.write('timestamp,visitor_count\n')
+                file.close()
+            # Append data to file
+            with open(filename, 'a') as file:
+                file.write(f"{timestamp},{visitor_count}\n")
+            file.close()
             ws.close()
 
 def on_error(ws, error):
